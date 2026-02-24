@@ -9,14 +9,41 @@
 
 .vertical-timeline-element p {
     color: rgb(39, 40, 34);
+    font-size: 0.98rem;
+}
+
+.vertical-timeline-element a,
+.vertical-timeline-element a:visited {
+    color: #5000ca;
+}
+
+.vertical-timeline-element a:hover {
+    color: #3d0099;
 }
 
 .vertical-timeline-element h3 {
-    color: rgb(39, 40, 34);
+    color: #5000ca;
+    font-weight: 700;
 }
 
 .vertical-timeline-element h4 {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+.vertical-timeline-element {
+    margin-bottom: 2.2rem;
+}
+
+.vertical-timeline-element .timeline-description-list {
+    margin: 0.5rem 0 0;
+    padding-left: 1.2rem;
+}
+
+.vertical-timeline-element .timeline-description-list li {
     color: rgb(39, 40, 34);
+    font-size: 0.98rem;
+    margin-bottom: 0.35rem;
 }
 
 .vertical-timeline-element span {

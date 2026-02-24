@@ -46,3 +46,34 @@ form {
   width: 100% !important;
   margin-bottom: 15px !important;
 }
+
+.contact-details {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  a {
+    color: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #5000ca;
+    text-decoration: underline;
+  }
+}
+

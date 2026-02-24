@@ -8,6 +8,12 @@
         color: white;
     }
 }
+
+.skill-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
   
 .skills-container .skills-grid {
     display: grid;
