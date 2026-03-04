@@ -90,10 +90,10 @@ function Timeline() {
   return (
     <div id="history">
       <div className="items-container">
-        <h1>
-          Career History
+        <div className="timeline-header">
+          <h1>Career History</h1>
           <small className="timeline-hint">&lt;Click any entry to expand details&gt;</small>
-        </h1>
+        </div>
         <VerticalTimeline>
           {careerEntries.map((entry) => (
             <VerticalTimelineElement

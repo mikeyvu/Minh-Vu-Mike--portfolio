@@ -22,7 +22,7 @@ function Main() {
             rel="noreferrer"
             download
           >
-            Download My CV
+            View My CV
           </a>
         </div>
       </div>
