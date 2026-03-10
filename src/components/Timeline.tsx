@@ -11,9 +11,11 @@ import 'react-vertical-timeline-component/style.min.css';
 import '../assets/styles/Timeline.scss'
 
 type MediaType = 'image' | 'video' | 'embed';
+type EntrySection = 'personal-project' | 'professional-experience';
 
 interface CareerEntry {
   id: string;
+  section: EntrySection;
   date: string;
   title: string;
   company: string;
@@ -27,13 +29,14 @@ interface CareerEntry {
 const careerEntries: CareerEntry[] = [
   {
     id: 'online-ordering-system',
+    section: 'personal-project',
     date: 'Jan. 2025 - May 2025',
     title: 'Full Stack Developer',
     company: 'Online Ordering System - Self Employed | Hanoi, Vietnam',
-    previewImage: 'https://s.wordpress.com/mshots/v1/https://online-vender.vercel.app?w=1000',
-    mediaType: 'image',
-    mediaSrc: 'https://s.wordpress.com/mshots/v1/https://online-vender.vercel.app?w=1400',
-    demoUrl: 'https://online-vender.vercel.app/',
+    previewImage: 'https://img.youtube.com/vi/Wyt5HsjooLg/hqdefault.jpg',
+    mediaType: 'embed',
+    mediaSrc: 'https://www.youtube.com/embed/Wyt5HsjooLg?si=C-Yvvj0YtYaNL9Z3',
+    demoUrl: 'https://www.youtube.com/watch?v=Wyt5HsjooLg',
     description: [
       'Built and deployed a full-stack online ordering and restaurant management system for a family business in Vietnam.',
       'Drove a 40% rise in revenue and cut manual processes by 30% through automation and real-time system integration.',
@@ -48,12 +51,14 @@ const careerEntries: CareerEntry[] = [
   },
   {
     id: 'sample-assist',
+    section: 'professional-experience',
     date: 'September 2024 - June 2025',
     title: 'Software Engineering Intern',
     company: 'Sample Assist | Wollongong, NSW',
-    previewImage: 'https://drive.google.com/thumbnail?id=1NdiwHnnfaISi4Oc2mip8dJNdF_1jowjW&sz=w1000',
+    previewImage: 'https://img.youtube.com/vi/g3BSYlM0fOM/hqdefault.jpg',
     mediaType: 'embed',
-    mediaSrc: 'https://drive.google.com/file/d/1NdiwHnnfaISi4Oc2mip8dJNdF_1jowjW/view?usp=sharing',
+    mediaSrc: 'https://www.youtube.com/embed/g3BSYlM0fOM?si=i9biTTluKwjGW6TV',
+    demoUrl: 'https://www.youtube.com/watch?v=g3BSYlM0fOM',
     description: [
       'Researched and fine-tuned the PaddleOCR model to automate Patient Identity Verification, reducing manual data entry time by 80% for 10,000+ records and enabling more patients to receive treatment each day.',
       'Designed and generated synthetic datasets using GAN model to cover the lack of real data.',
@@ -66,59 +71,86 @@ const careerEntries: CareerEntry[] = [
   }
 ];
 
-const toDrivePreviewUrl = (url: string) => {
-  if (!url.includes('drive.google.com')) return url;
-
-  const match = url.match(/\/file\/d\/([^/]+)/);
-  if (!match) return url;
-
-  const fileId = match[1];
-  return `https://drive.google.com/file/d/${fileId}/preview`;
-};
-
 function Timeline() {
   const [selectedEntry, setSelectedEntry] = useState<CareerEntry | null>(null);
 
+  const personalProjects = useMemo(
+    () => careerEntries.filter((entry) => entry.section === 'personal-project'),
+    []
+  );
+
+  const professionalExperience = useMemo(
+    () => careerEntries.filter((entry) => entry.section === 'professional-experience'),
+    []
+  );
+
   const modalMediaUrl = useMemo(() => {
     if (!selectedEntry) return '';
-    if (selectedEntry.mediaType === 'embed') {
-      return toDrivePreviewUrl(selectedEntry.mediaSrc);
-    }
     return selectedEntry.mediaSrc;
   }, [selectedEntry]);
 
   return (
     <div id="history">
       <div className="items-container">
-        <div className="timeline-header">
-          <h1>Career History</h1>
+        <section className="timeline-section">
+          <h1 className="timeline-section-title">Professional Experience</h1>
           <small className="timeline-hint">&lt;Click any entry to expand details&gt;</small>
-        </div>
-        <VerticalTimeline>
-          {careerEntries.map((entry) => (
-            <VerticalTimelineElement
-              key={entry.id}
-              className="vertical-timeline-element--work"
-              contentStyle={{ background: 'white', color: 'rgb(39, 40, 34)' }}
-              contentArrowStyle={{ borderRight: '7px solid  white' }}
-              date={entry.date}
-              iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
-              icon={<FontAwesomeIcon icon={faBriefcase} />}
-            >
-              <button
-                className="timeline-preview-card"
-                type="button"
-                onClick={() => setSelectedEntry(entry)}
+          <VerticalTimeline>
+            {professionalExperience.map((entry) => (
+              <VerticalTimelineElement
+                key={entry.id}
+                className="vertical-timeline-element--work"
+                contentStyle={{ background: 'white', color: 'rgb(39, 40, 34)' }}
+                contentArrowStyle={{ borderRight: '7px solid  white' }}
+                date={entry.date}
+                iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
+                icon={<FontAwesomeIcon icon={faBriefcase} />}
               >
-                <img src={entry.previewImage} alt={`${entry.title} preview`} className="timeline-preview-image" />
-                <div className="timeline-preview-content">
-                  <h3 className="vertical-timeline-element-title">{entry.title}</h3>
-                  <h4 className="vertical-timeline-element-subtitle">{entry.company}</h4>
-                </div>
-              </button>
-            </VerticalTimelineElement>
-          ))}
-        </VerticalTimeline>
+                <button
+                  className="timeline-preview-card"
+                  type="button"
+                  onClick={() => setSelectedEntry(entry)}
+                >
+                  <img src={entry.previewImage} alt={`${entry.title} preview`} className="timeline-preview-image" />
+                  <div className="timeline-preview-content">
+                    <h3 className="vertical-timeline-element-title">{entry.title}</h3>
+                    <h4 className="vertical-timeline-element-subtitle">{entry.company}</h4>
+                  </div>
+                </button>
+              </VerticalTimelineElement>
+            ))}
+          </VerticalTimeline>
+        </section>
+
+        <section className="timeline-section">
+          <h1 className="timeline-section-title">Personal Project</h1>
+          <small className="timeline-hint">&lt;Click any entry to expand details&gt;</small>
+          <VerticalTimeline>
+            {personalProjects.map((entry) => (
+              <VerticalTimelineElement
+                key={entry.id}
+                className="vertical-timeline-element--work"
+                contentStyle={{ background: 'white', color: 'rgb(39, 40, 34)' }}
+                contentArrowStyle={{ borderRight: '7px solid  white' }}
+                date={entry.date}
+                iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
+                icon={<FontAwesomeIcon icon={faBriefcase} />}
+              >
+                <button
+                  className="timeline-preview-card"
+                  type="button"
+                  onClick={() => setSelectedEntry(entry)}
+                >
+                  <img src={entry.previewImage} alt={`${entry.title} preview`} className="timeline-preview-image" />
+                  <div className="timeline-preview-content">
+                    <h3 className="vertical-timeline-element-title">{entry.title}</h3>
+                    <h4 className="vertical-timeline-element-subtitle">{entry.company}</h4>
+                  </div>
+                </button>
+              </VerticalTimelineElement>
+            ))}
+          </VerticalTimeline>
+        </section>
       </div>
 
       <Dialog
@@ -159,7 +191,9 @@ function Timeline() {
                     src={modalMediaUrl}
                     title={`${selectedEntry.title} media`}
                     className="career-modal-media"
-                    allow="autoplay"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
                   />
                 )}
               </div>

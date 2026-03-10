@@ -15,15 +15,20 @@ function Main() {
         <div className="content">
           <h1>Hong Minh Vu</h1>
           <p>Backend Engineer - AI and Big Data Enthusiast</p>
-          <a
-            className="cv-download-link"
-            href={cvHref}
-            target="_blank"
-            rel="noreferrer"
-            download
-          >
-            View My CV
-          </a>
+          <div className="cta-actions">
+            <a
+              className="cv-download-link"
+              href={cvHref}
+              target="_blank"
+              rel="noreferrer"
+              download
+            >
+              View My CV
+            </a>
+            <a className="cv-download-link" href="#contact">
+              Let's Connect
+            </a>
+          </div>
         </div>
       </div>
     </div>

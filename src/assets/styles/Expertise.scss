@@ -1,37 +1,36 @@
 .expertise-section {
-    margin-top: 20px;
+    margin-top: 0;
 }
 
 .expertise-section .skills-container {
-    padding-top: 2%;
+    padding-top: 0;
 }
 
 .skills-container {
-    padding: 5% 10%;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
     text-align: left;
-
-    svg {
-        color: white;
-    }
-}
-
-.skill-icons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
   
 .skills-container .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    grid-gap: 50px;
+    grid-template-columns: 1fr;
+    row-gap: 1.2rem;
 }
   
 .skills-container .skills-grid .skill {
     align-items: center;
     text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 10px;
+    padding: 1.1rem;
+
+    h3 {
+        margin: 0 0 1rem;
+    }
+}
+
+.light-mode .skills-container .skills-grid .skill {
+    border-color: rgba(13, 17, 22, 0.2);
 }
   
 .chip {
@@ -52,12 +51,17 @@
 
 .flex-chips {
     line-height: 2;
-    margin: 0.5;
+    margin: 0 0 0.8rem;
 
     .chip-title {
         color: white;
         padding-right: 10px;
+        font-weight: 700;
     }
+}
+
+.flex-chips:last-child {
+    margin-bottom: 0;
 }
 
 .flex-chips .MuiChip-root {
@@ -77,7 +81,7 @@
 @media screen {
     @media (max-width: 768px) {
         .expertise-section {
-            margin-top: 16px;
+            margin-top: 0;
         }
 
         .expertise-section .skills-container {
@@ -86,8 +90,6 @@
 
         .skills-container {
             display: block;
-            padding-left: 5%;
-            padding-right: 5%;
         }
     
         .skills-container .skills-grid {
@@ -96,6 +98,7 @@
         
         .skills-container .skills-grid .skill {
             padding-bottom: 5%;
+            margin-bottom: 0.8rem;
         }
     }
 
