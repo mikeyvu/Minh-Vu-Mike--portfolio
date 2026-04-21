@@ -14,7 +14,7 @@ function Main() {
         </div>
         <div className="content">
           <h1>Hong Minh Vu</h1>
-          <p>Backend Engineer - AI and Big Data Enthusiast</p>
+          <p>Full Stack Software Engineer - AI Engineer and Big Data Enthusiast</p>
           <div className="cta-actions">
             <a
               className="cv-download-link"

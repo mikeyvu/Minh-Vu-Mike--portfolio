@@ -9,6 +9,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import '../assets/styles/Timeline.scss'
+import todoBotMock from '../assets/images/todo-bot-mock.png';
 
 type MediaType = 'image' | 'video' | 'embed';
 type EntrySection = 'personal-project' | 'professional-experience';
@@ -27,6 +28,23 @@ interface CareerEntry {
 }
 
 const careerEntries: CareerEntry[] = [
+  {
+    id: 'todo-bot-mern',
+    section: 'personal-project',
+    date: 'Apr 2026 - Present',
+    title: 'Full Stack Software Engineer',
+    company: 'Todo Bot (Full-Stack MERN) | Wollongong, NSW',
+    previewImage: todoBotMock,
+    mediaType: 'image',
+    mediaSrc: todoBotMock,
+    demoUrl: 'https://todo-bot-ut0r.onrender.com/',
+    description: [
+      'Strategically engineered to bridge the gap between enterprise Java ecosystems and the modern MERN stack, mastering reactive state management and non-relational data modeling.',
+      'Accelerated frontend development and consistency by implementing a reusable, component-driven UI using shadcn/ui and Tailwind CSS for clean class composition.',
+      'Optimized end-to-end data persistence through a flexible MongoDB/Mongoose schema, ensuring high-throughput tracking of active and completed task states.',
+      'Strategizing AI-driven task optimization by designing a Retrieval-Augmented Generation (RAG) roadmap to provide users with time-blocked schedules based on historical completion context.'
+    ]
+  },
   {
     id: 'online-ordering-system',
     section: 'personal-project',
