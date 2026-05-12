@@ -1,45 +1,31 @@
-import React, {useState, useEffect} from "react";
-import {
-  Main,
-    About,
-  Timeline,
-  Expertise,
-  Contact,
-  Navigation,
-  Footer,
-} from "./components";
-import FadeIn from './components/FadeIn';
-import './index.scss';
+import { Nav } from "./components/Nav";
+import { ScrollToTop } from "./components/ScrollToTop";
+import { Hero } from "./components/Hero";
+import { Experience } from "./components/Experience";
+import { Projects } from "./components/Projects";
+import { Skills } from "./components/Skills";
+import { Contact } from "./components/Contact";
 
-function App() {
-    const [mode, setMode] = useState<string>('dark');
-
-    const handleModeChange = () => {
-        if (mode === 'dark') {
-            setMode('light');
-        } else {
-            setMode('dark');
-        }
-    }
-
-    useEffect(() => {
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-      }, []);
-
+export default function App() {
     return (
-    <div className={`main-container ${mode === 'dark' ? 'dark-mode' : 'light-mode'}`}>
-        <Navigation parentToChild={{mode}} modeChange={handleModeChange}/>
-        <FadeIn transitionDuration={700}>
-            <Main/>
-            <About/>
-            <Timeline/>
-            <Expertise/>
-            {/* <Project/> */}
-            <Contact/>
-        </FadeIn>
-        <Footer />
-    </div>
+        <main className="bg-[#080818] overflow-x-hidden">
+            <Nav />
+            <ScrollToTop />
+            <section id="hero">
+                <Hero />
+            </section>
+            <section id="experience">
+                <Experience />
+            </section>
+            <section id="projects">
+                <Projects />
+            </section>
+            <section id="skills">
+                <Skills />
+            </section>
+            <section id="contact">
+                <Contact />
+            </section>
+        </main>
     );
 }
-
-export default App;
