@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import todoBotMock from "../assets/images/todo-bot-mock.png";
-import portfolioMock from "../assets/images/portfolio-demo.jpg"
+import portfolioMock from "../assets/images/portfolio-demo.jpg";
+import gongSoccerDemo from "../assets/images/gong-soccer-demo.jpg";
 
 const projects = [
   {
     title: "Todo Bot — Full-Stack MERN",
     description:
-      "A full-stack task management app with reusable UI components and MongoDB persistence. Demo coming soon.",
+      "A full-stack task management app with reusable UI components and MongoDB persistence.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Mongoose"],
     color: "#7c3aed",
     accent: "#a78bfa",
@@ -31,19 +32,6 @@ const projects = [
     liveUrl: "https://www.youtube.com/watch?v=Wyt5HsjooLg",
   },
   {
-    title: "Gong Soccer",
-    description:
-      "An in-progress football management experience with team stats, fixtures, and roster updates. Demo coming soon.",
-    tech: ["React", "TypeScript", "Node.js", "PostgreSQL"],
-    color: "#059669",
-    accent: "#34d399",
-    gradient: "linear-gradient(135deg, #011a0f 0%, #053321 100%)",
-    status: "In Progress",
-    demoVideo: null,
-    githubUrl: null,
-    liveUrl: null,
-  },
-  {
     title: "Portfolio — Mike Vu",
     description:
       "This personal portfolio showcasing projects, experience, and technical skills with a bold visual theme.",
@@ -56,6 +44,20 @@ const projects = [
     previewImage: portfolioMock,
     githubUrl: "https://github.com/mikeyvu/hong-minh-vu",
     liveUrl: "https://mikeyvu.github.io/hong-minh-vu/",
+  },
+  {
+    title: "Gong Soccer",
+    description:
+      "An in-progress football management experience with team stats, fixtures, and roster updates.",
+    tech: ["React", "TypeScript", "Node.js", "PostgreSQL"],
+    color: "#059669",
+    accent: "#34d399",
+    gradient: "linear-gradient(135deg, #011a0f 0%, #053321 100%)",
+    status: "In Progress",
+    demoVideo: null,
+    previewImage: gongSoccerDemo,
+    githubUrl: null,
+    liveUrl: null,
   },
 ];
 

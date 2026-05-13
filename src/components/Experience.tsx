@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import gradPhoto from "../assets/images/grad-photo.jpg";
 
 type TimelineItem = {
   kind: "work" | "education";
@@ -13,6 +14,7 @@ type TimelineItem = {
   color: string;
   accent: string;
   demoUrl?: string;
+  previewImage?: string;
 };
 
 const timeline: TimelineItem[] = [
@@ -43,13 +45,15 @@ const timeline: TimelineItem[] = [
     description:
       "Focused on software engineering, data structures, and database systems with project-based coursework.",
     points: [
-      "Capstone project in data engineering",
+      "Graduated with Distinction with major in Big Data and AI",
+      "Capstone project with Sample Assist in software development and AI engineering",
       "Coursework in algorithms and distributed systems",
       "Collaborative team projects",
     ],
-    tags: ["Algorithms", "Databases", "Software Engineering"],
+    tags: ["Algorithms", "Databases", "Software Engineering", "AI", "Big Data"],
     color: "#059669",
     accent: "#34d399",
+    previewImage: gradPhoto,
   },
 ];
 
@@ -58,7 +62,7 @@ const kindBadge: Record<string, { label: string; bg: string; text: string }> = {
   education: { label: "Education", bg: "#05966922", text: "#34d399" },
 };
 
-function VideoSlot({ color, accent, demoUrl }: { color: string; accent: string; demoUrl?: string }) {
+function VideoSlot({ color, accent, demoUrl, previewImage }: { color: string; accent: string; demoUrl?: string; previewImage?: string }) {
   const [hovered, setHovered] = useState(false);
   if (demoUrl) {
     return (
@@ -70,6 +74,13 @@ function VideoSlot({ color, accent, demoUrl }: { color: string; accent: string; 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
+      </div>
+    );
+  }
+  if (previewImage) {
+    return (
+      <div className="relative w-full rounded-xl overflow-hidden" style={{ aspectRatio: "16/9" }}>
+        <img src={previewImage} alt="Demo preview" className="w-full h-full object-cover" />
       </div>
     );
   }
@@ -173,7 +184,7 @@ function EntryRow({ item, index, visible }: { item: TimelineItem; index: number;
             </p>
           </div>
         </div>
-        <VideoSlot color={item.color} accent={item.accent} demoUrl={item.demoUrl} />
+        <VideoSlot color={item.color} accent={item.accent} demoUrl={item.demoUrl} previewImage={item.previewImage} />
         <div className="flex flex-wrap gap-1.5">
           {item.tags.map((tag) => (
             <span
